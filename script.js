@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Hide the global loader when the page is fully loaded
-    document.getElementById("global-loader").classList.add("hidden");
+    document.getElementById("activation-page").classList.remove("hidden");
 });
 
 const activationCode = "EXIST369";
 const countryList = [
     { name: "United States", code: "+1", flag: "flags/us.png" },
-    { name: "United Kingdom", code: "+44", flag: "flags/uk.png" },
+    { name: "United Kingdom", code: "+44", flag: "flags/gb.png" },
     { name: "Canada", code: "+1", flag: "flags/ca.png" },
     { name: "Germany", code: "+49", flag: "flags/de.png" },
     { name: "India", code: "+91", flag: "flags/in.png" },
+    { name: "France", code: "+33", flag: "flags/fr.png" },
     { name: "Australia", code: "+61", flag: "flags/au.png" },
     { name: "France", code: "+33", flag: "flags/fr.png" },
     { name: "Italy", code: "+39", flag: "flags/it.png" },
@@ -42,14 +42,6 @@ const countryList = [
 let selectedCountry = null;
 let selectedNumber = null;
 
-function startLoading(callback) {
-    document.getElementById("global-loader").classList.remove("hidden");
-    setTimeout(() => {
-        document.getElementById("global-loader").classList.add("hidden");
-        callback();
-    }, 4000);
-}
-
 function verifyCode() {
     const inputCode = document.getElementById("activation-code").value;
     if (inputCode === activationCode) {
@@ -73,7 +65,7 @@ function loadCountries() {
         const item = document.createElement("div");
         item.classList.add("country-item");
         item.innerHTML = `<img src="${country.flag}" alt="${country.name}"> ${country.name} (${country.code})`;
-        item.onclick = () => startLoading(() => selectCountry(country));
+        item.onclick = () => selectCountry(country);
         countryDiv.appendChild(item);
     });
 }
@@ -94,7 +86,7 @@ function loadNumbers() {
         const item = document.createElement("div");
         item.classList.add("number-item");
         item.textContent = fullNumber;
-        item.onclick = () => startLoading(() => selectNumber(fullNumber));
+        item.onclick = () => selectNumber(fullNumber);
         numberDiv.appendChild(item);
     }
 }
@@ -113,3 +105,7 @@ function startConnecting() {
     }, 120000);
 }
 
+function retryConnection() {
+    document.getElementById("connecting-page").classList.add("hidden");
+    document.getElementById("country-page").classList.remove("hidden");
+}
