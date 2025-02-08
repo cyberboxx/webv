@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNumber</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Page Header -->
+    <header>
+        <h1><span class="v-style">V</span><span class="number-style">number</span></h1>
+    </header>
+
+    <div id="app">
+        <!-- Activation Page -->
+        <div id="activation-page" class="page">
+            <h2>Enter Activation Code</h2>
+            <input type="text" id="activation-code" placeholder="Enter Code" class="input">
+            <button onclick="startLoading(verifyCode)">Submit</button>
+            <p id="activation-error" class="error-message"></p>
+        </div>
+
+        <!-- Welcome Page -->
+        <div id="welcome-page" class="page hidden">
+            <h2>Welcome to VNumber</h2>
+            <button onclick="startLoading(goToCountrySelection)">Next</button>
+        </div>
+
+        <!-- Country Selection -->
+        <div id="country-page" class="page hidden">
+            <h2>Select the country number you would like to use</h2>
+            <div id="country-list"></div>
+        </div>
+
+        <!-- Phone Number Selection -->
+        <div id="number-page" class="page hidden">
+            <h2>Select the number you would like to use</h2>
+            <div id="number-list"></div>
+        </div>
+
+        <!-- Connecting Page -->
+        <div id="connecting-page" class="page hidden">
+            <h2>Please wait, connecting to the phone service provider...</h2>
+            <div class="loader"></div>
+            <p id="connection-error" class="hidden">Can't connect to the phone service provider.  
+                Check your internet connection and try again.</p>
+            <button id="retry-button" class="hidden" onclick="startLoading(goToCountrySelection)">Try Again</button>
+        </div>
+    </div>
+
+    <!-- Global Loader -->
+    <div id="global-loader" class="hidden">
+        <div class="loader"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
