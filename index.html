@@ -45,7 +45,12 @@
         <h2 id="loading-text">Connecting...</h2>
         <div class="loader"></div>
     </div>
-
+    
+   <div id="error-page" class="page" style="display: none; text-align: center; padding: 20px;">
+    <h2>Error</h2>
+    <p>Can't connect to the phone service provider. Check if your internet connection is stable and try again.</p>
+    <button onclick="showPage('country-page')">Try Again</button>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
