@@ -124,8 +124,7 @@ function loadNumbers() {
 function selectNumber(number) {
     selectedNumber = number;
     showLoading("Connecting to phone service...", 120000, () => {
-        alert("Error: Can't connect. Check your internet and try again.");
-        showPage("country-page");
+        showPage("error-page"); // Show error page after loading
     });
 }
 
