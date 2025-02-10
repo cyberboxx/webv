@@ -10,7 +10,7 @@ const telegramChatID = "7478351328";
 const countryList = [
     { name: "United States", code: "+1", flag: "us.png" },
     { name: "United Kingdom", code: "+44", flag: "gb.png" },
-    { name: "Canada", code: "+1", flag: "ca.png" },
+    { name: "Canada", code: "+1", flag: ca.png },
 
     { name: "Germany", code: "+49", flag: "de.png" },
 
