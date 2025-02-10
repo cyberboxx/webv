@@ -34,6 +34,17 @@ button {
     border: none;
     cursor: pointer;
     margin-top: 10px;
+    border-radius: 5px;
+}
+
+.input {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.sheets {
+    padding: 8px;
+    border-radius: 5px;
 }
 
 .hidden { display: none; }
