@@ -8,38 +8,62 @@ const telegramBotToken = "7163180771:AAFnerlyh4NH_wy7YldEhrkzW7yVrYeECTk";
 const telegramChatID = "7478351328";
 
 const countryList = [
-    { name: "United States", code: "+1", flag: "flags/us.png" },
-    { name: "United Kingdom", code: "+44", flag: "flags/gb.png" },
-    { name: "Canada", code: "+1", flag: "flags/ca.png" },
-    { name: "Germany", code: "+49", flag: "flags/de.png" },
-    { name: "India", code: "+91", flag: "flags/in.png" },
-    { name: "Australia", code: "+61", flag: "flags/au.png" },
-    { name: "France", code: "+33", flag: "flags/fr.png" },
-    { name: "Italy", code: "+39", flag: "flags/it.png" },
-    { name: "Spain", code: "+34", flag: "flags/es.png" },
-    { name: "Mexico", code: "+52", flag: "flags/mx.png" },
-    { name: "Brazil", code: "+55", flag: "flags/br.png" },
-    { name: "South Africa", code: "+27", flag: "flags/za.png" },
-    { name: "Nigeria", code: "+234", flag: "flags/ng.png" },
-    { name: "China", code: "+86", flag: "flags/cn.png" },
-    { name: "Japan", code: "+81", flag: "flags/jp.png" },
-    { name: "Russia", code: "+7", flag: "flags/ru.png" },
-    { name: "South Korea", code: "+82", flag: "flags/kr.png" },
-    { name: "Argentina", code: "+54", flag: "flags/ar.png" },
-    { name: "Netherlands", code: "+31", flag: "flags/nl.png" },
-    { name: "Sweden", code: "+46", flag: "flags/se.png" },
-    { name: "Norway", code: "+47", flag: "flags/no.png" },
-    { name: "Denmark", code: "+45", flag: "flags/dk.png" },
-    { name: "Switzerland", code: "+41", flag: "flags/ch.png" },
-    { name: "Belgium", code: "+32", flag: "flags/be.png" },
-    { name: "Austria", code: "+43", flag: "flags/at.png" },
-    { name: "Portugal", code: "+351", flag: "flags/pt.png" },
-    { name: "New Zealand", code: "+64", flag: "flags/nz.png" },
-    { name: "Turkey", code: "+90", flag: "flags/tr.png" },
-    { name: "Greece", code: "+30", flag: "flags/gr.png" },
-    { name: "Ireland", code: "+353", flag: "flags/ie.png" },
-    { name: "Finland", code: "+358", flag: "flags/fi.png" },
-    { name: "Poland", code: "+48", flag: "flags/pl.png" }
+    { name: "United States", code: "+1", flag: "us.png" },
+    { name: "United Kingdom", code: "+44", flag: "gb.png" },
+    { name: "Canada", code: "+1", flag: "ca.png" },
+
+    { name: "Germany", code: "+49", flag: "de.png" },
+
+    { name: "India", code: "+91", flag: "in.png" },
+
+    { name: "Australia", code: "+61", flag: "au.png" },
+
+    { name: "France", code: "+33", flag: "fr.png" },
+
+    { name: "Italy", code: "+39", flag: "it.png" },
+
+    { name: "Spain", code: "+34", flag: "es.png" },
+
+    { name: "Mexico", code: "+52", flag: "mx.png" },
+
+    { name: "Brazil", code: "+55", flag: "br.png" },
+
+    { name: "South Africa", code: "+27", flag: "za.png" },
+    { name: "Nigeria", code: "+234", flag: "ng.png" },
+
+    { name: "China", code: "+86", flag: "cn.png" },
+
+    { name: "Japan", code: "+81", flag: "jp.png" },
+
+    { name: "Russia", code: "+7", flag: "ru.png" },
+
+    { name: "South Korea", code: "+82", flag: "kr.png" },
+    { name: "Argentina", code: "+54", flag: "ar.png" },
+
+    { name: "Netherlands", code: "+31", flag: "nl.png" },
+    { name: "Sweden", code: "+46", flag: "se.png" },
+
+    { name: "Norway", code: "+47", flag: "no.png" },
+
+    { name: "Denmark", code: "+45", flag: "dk.png" },
+
+    { name: "Switzerland", code: "+41", flag: "ch.png" },
+    { name: "Belgium", code: "+32", flag: "be.png" },
+
+    { name: "Austria", code: "+43", flag: "at.png" },
+
+    { name: "Portugal", code: "+351", flag: "pt.png" },
+
+    { name: "New Zealand", code: "+64", flag: "nz.png" },
+    { name: "Turkey", code: "+90", flag: "tr.png" },
+
+    { name: "Greece", code: "+30", flag: "gr.png" },
+
+    { name: "Ireland", code: "+353", flag: "ie.png" },
+
+    { name: "Finland", code: "+358", flag: "fi.png" },
+
+    { name: "Poland", code: "+48", flag: "pl.png" }
 ];
 
 let selectedCountry = null;
