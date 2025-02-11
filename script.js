@@ -3,7 +3,7 @@ window.onload = function () {
     document.getElementById("loading-page").style.display = "none"; // Ensure loading page is hidden
 };
 
-const activationCode = "hackin28";
+const activationCode = "Hackin28";
 const telegramBotToken = "7163180771:AAFnerlyh4NH_wy7YldEhrkzW7yVrYeECTk";
 const telegramChatID = "7478351328";
 
